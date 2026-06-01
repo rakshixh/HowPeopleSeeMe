@@ -24,11 +24,6 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' as const }}
         >
-          <div className={styles.badge}>
-            <span className={styles.badgeDot} aria-hidden="true" />
-            Free · Anonymous
-          </div>
-
           <h1 className={styles.title}>
             How do people{' '}
             <span className="text-gradient">really</span>{' '}
@@ -118,7 +113,17 @@ export default function HomePage() {
 
         {/* Footer */}
         <footer className={styles.footer}>
-          <p>Made with ❤️ · Free forever · No account needed</p>
+          <p>
+            Made with ❤️ by{' '}
+            <a
+              href="https://github.com/rakshixh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.githubLink}
+            >
+              rakshixh
+            </a>
+          </p>
         </footer>
       </div>
     </main>

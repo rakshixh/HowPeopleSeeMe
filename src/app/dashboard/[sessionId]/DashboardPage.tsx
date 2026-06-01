@@ -122,6 +122,17 @@ export default function DashboardPage() {
 
         <footer className={styles.footer}>
           <a href="/" className={styles.footerLink}>← Create your own appreciation page</a>
+          <p className={styles.footerAuthor}>
+            Made with ❤️ by{' '}
+            <a
+              href="https://github.com/rakshixh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.githubLink}
+            >
+              rakshixh
+            </a>
+          </p>
         </footer>
       </div>
     </main>
