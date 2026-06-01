@@ -30,25 +30,7 @@
   padding-top: $space-8;
 }
 
-.badge {
-  @include flex-center;
-  gap: $space-2;
-  font-size: $text-sm;
-  font-weight: $weight-semibold;
-  color: $accent-secondary;
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  border-radius: $radius-full;
-  padding: $space-2 $space-4;
-}
 
-.badgeDot {
-  width: 7px;
-  height: 7px;
-  background: $accent-primary;
-  border-radius: 50%;
-  animation: pulse-glow 2s ease-in-out infinite;
-}
 
 .title {
   font-size: $text-4xl;
@@ -170,5 +152,17 @@
   p {
     font-size: $text-xs;
     color: $text-muted;
+  }
+
+  .githubLink {
+    color: $text-muted;
+    font-weight: $weight-semibold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $accent-primary;
+    }
   }
 }

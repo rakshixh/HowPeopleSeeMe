@@ -171,6 +171,9 @@
 .footer {
   text-align: center;
   padding-top: $space-4;
+  @include flex-col;
+  align-items: center;
+  gap: $space-2;
 }
 
 .footerLink {
@@ -181,6 +184,23 @@
 
   &:hover {
     color: $text-secondary;
+  }
+}
+
+.footerAuthor {
+  font-size: $text-xs;
+  color: $text-muted;
+}
+
+.githubLink {
+  color: $text-muted;
+  font-weight: $weight-semibold;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: $accent-primary;
   }
 }
 
