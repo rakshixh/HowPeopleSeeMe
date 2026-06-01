@@ -78,7 +78,7 @@ export function pluralize(count: number, singular: string, plural?: string): str
  * Build the share URL for a session
  */
 export function buildShareUrl(sessionId: string, baseUrl?: string): string {
-  const base = baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const base = (baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000').replace(/\/+$/, '');
   return `${base}/r/${sessionId}`;
 }
 
@@ -86,6 +86,6 @@ export function buildShareUrl(sessionId: string, baseUrl?: string): string {
  * Build the dashboard URL for a session
  */
 export function buildDashboardUrl(sessionId: string, baseUrl?: string): string {
-  const base = baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const base = (baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000').replace(/\/+$/, '');
   return `${base}/dashboard/${sessionId}`;
 }
