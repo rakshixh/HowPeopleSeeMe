@@ -1,0 +1,129 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  @include glass-card;
+  @include flex-col;
+  gap: $space-5;
+  padding: $space-6;
+}
+
+.title {
+  font-size: $text-lg;
+  font-weight: $weight-semibold;
+  color: $text-primary;
+}
+
+// Preview card
+.previewCard {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(167, 139, 250, 0.06));
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: $radius-xl;
+  padding: $space-6;
+  @include flex-col-center;
+  gap: $space-2;
+  text-align: center;
+  min-height: 180px;
+}
+
+.previewHeader {
+  align-self: flex-start;
+  margin-bottom: $space-2;
+}
+
+.previewBadge {
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  color: $accent-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(139, 92, 246, 0.12);
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+}
+
+.previewEmoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.previewLabel {
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+}
+
+.previewMeta {
+  font-size: $text-xs;
+  color: $text-muted;
+}
+
+.previewEmpty {
+  font-size: $text-sm;
+  color: $text-muted;
+  text-align: center;
+  max-width: 220px;
+}
+
+// Share buttons
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-3;
+}
+
+.shareBtn {
+  @include flex-center;
+  @include touch-target;
+  gap: $space-2;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: $transition-base;
+  padding: $space-3;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.whatsapp {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.25);
+  color: #25D366;
+
+  &:hover { background: rgba(37, 211, 102, 0.18); }
+}
+
+.twitter {
+  background: rgba(29, 161, 242, 0.1);
+  border-color: rgba(29, 161, 242, 0.25);
+  color: #1DA1F2;
+
+  &:hover { background: rgba(29, 161, 242, 0.18); }
+}
+
+.native {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.25);
+  color: $accent-secondary;
+
+  &:hover { background: rgba(139, 92, 246, 0.18); }
+}
+
+.copy {
+  background: $bg-card;
+  border-color: $border-card;
+  color: $text-secondary;
+
+  &:hover {
+    background: $bg-card-hover;
+    color: $text-primary;
+    border-color: $border-accent;
+  }
+}
+
+.hiddenCanvas {
+  display: none;
+}

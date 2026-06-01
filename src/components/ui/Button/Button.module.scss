@@ -1,0 +1,135 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.button {
+  @include flex-center;
+  @include touch-target;
+  gap: $space-2;
+  font-family: $font-sans;
+  font-weight: $weight-semibold;
+  border-radius: $radius-lg;
+  border: none;
+  cursor: pointer;
+  transition: $transition-base;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Variants
+.primary {
+  background: $accent-gradient;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
+    transform: translateY(-1px);
+
+    &::before { opacity: 1; }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.secondary {
+  background: $bg-card;
+  color: $text-primary;
+  border: 1px solid $border-card;
+
+  &:hover:not(:disabled) {
+    background: $bg-card-hover;
+    border-color: $border-accent;
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: $text-secondary;
+
+  &:hover:not(:disabled) {
+    background: $bg-card;
+    color: $text-primary;
+  }
+}
+
+.danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: $error;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+
+  &:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: $error;
+  }
+}
+
+// Sizes
+.sm {
+  font-size: $text-sm;
+  padding: $space-2 $space-4;
+  min-height: $touch-min;
+  border-radius: $radius-md;
+}
+
+.md {
+  font-size: $text-base;
+  padding: $space-3 $space-6;
+  min-height: $touch-min;
+}
+
+.lg {
+  font-size: $text-lg;
+  padding: $space-4 $space-8;
+  min-height: 56px;
+  border-radius: $radius-xl;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+// Loading state
+.loading {
+  pointer-events: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.icon {
+  @include flex-center;
+  flex-shrink: 0;
+}

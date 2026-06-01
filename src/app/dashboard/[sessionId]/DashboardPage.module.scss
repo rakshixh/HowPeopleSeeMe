@@ -1,0 +1,220 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.main {
+  min-height: 100dvh;
+  padding: $space-4 0 $space-12;
+}
+
+.container {
+  width: 100%;
+  max-width: $max-width-lg;
+  margin-inline: auto;
+  padding-inline: $space-4;
+  @include flex-col;
+  gap: $space-6;
+
+  @include md {
+    padding-inline: $space-6;
+  }
+}
+
+// Header
+.header {
+  @include glass-card;
+  padding: $space-5 $space-5;
+  @include flex-col;
+  gap: $space-4;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $accent-gradient;
+  @include flex-center;
+  font-size: $text-2xl;
+  font-weight: $weight-black;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: $shadow-glow;
+}
+
+.headerInfo {
+  @include flex-col;
+  gap: $space-1;
+  min-width: 0;
+}
+
+.name {
+  font-size: $text-xl;
+  font-weight: $weight-bold;
+  color: $text-primary;
+  @include truncate;
+
+  @include md {
+    font-size: $text-2xl;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.metaBadge {
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  color: $accent-secondary;
+  background: rgba(139, 92, 246, 0.12);
+  padding: $space-1 $space-2;
+  border-radius: $radius-full;
+}
+
+.expiry {
+  font-size: $text-xs;
+  color: $text-muted;
+}
+
+// Share row
+.shareRow {
+  @include flex-between;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $border-subtle;
+  border-radius: $radius-lg;
+  padding: $space-3 $space-3 $space-3 $space-4;
+  gap: $space-3;
+}
+
+.shareUrlText {
+  font-size: $text-xs;
+  color: $text-muted;
+  @include truncate;
+  font-family: monospace;
+}
+
+.copyBtn {
+  flex-shrink: 0;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  color: $accent-secondary;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: $radius-md;
+  padding: $space-1 $space-3;
+  cursor: pointer;
+  min-height: $touch-min;
+  transition: $transition-fast;
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.2);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Tabs
+.tabs {
+  display: flex;
+  gap: $space-2;
+  background: $bg-card;
+  border: 1px solid $border-card;
+  border-radius: $radius-xl;
+  padding: $space-1;
+}
+
+.tab {
+  flex: 1;
+  @include flex-center;
+  @include touch-target;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  color: $text-secondary;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: $transition-base;
+
+  &:hover {
+    color: $text-primary;
+    background: $bg-card-hover;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.tabActive {
+  background: $accent-gradient;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.35);
+
+  &:hover {
+    background: $accent-gradient;
+    color: #fff;
+  }
+}
+
+// Footer
+.footer {
+  text-align: center;
+  padding-top: $space-4;
+}
+
+.footerLink {
+  font-size: $text-sm;
+  color: $text-muted;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $text-secondary;
+  }
+}
+
+// Error page
+.errorPage {
+  min-height: 100dvh;
+  @include flex-col-center;
+  padding: $space-4;
+}
+
+.errorCard {
+  @include glass-card;
+  @include flex-col-center;
+  gap: $space-4;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  padding: $space-12 $space-8;
+}
+
+.errorEmoji { font-size: 4rem; }
+.errorTitle {
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+}
+.errorText {
+  font-size: $text-base;
+  color: $text-secondary;
+  line-height: $leading-relaxed;
+}
+.errorLink {
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  color: $accent-secondary;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

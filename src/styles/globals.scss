@@ -1,0 +1,282 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================================
+// Google Fonts Import
+// ============================================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+// ============================================================
+// CSS Reset & Base
+// ============================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-sans;
+  font-weight: $weight-normal;
+  line-height: $leading-normal;
+  color: $text-primary;
+  background-color: $bg-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+// ============================================================
+// Background — Animated gradient orbs
+// ============================================================
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: $radius-full;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+body::before {
+  width: 600px;
+  height: 600px;
+  background: $accent-primary;
+  top: -200px;
+  right: -200px;
+  animation: orb-float-1 20s ease-in-out infinite;
+}
+
+body::after {
+  width: 400px;
+  height: 400px;
+  background: $accent-secondary;
+  bottom: -100px;
+  left: -100px;
+  animation: orb-float-2 16s ease-in-out infinite;
+}
+
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-60px, 40px) scale(1.1); }
+  66%       { transform: translate(40px, -30px) scale(0.9); }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(40px, -50px) scale(1.15); }
+}
+
+// ============================================================
+// Typography
+// ============================================================
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $weight-bold;
+  line-height: $leading-tight;
+  color: $text-primary;
+}
+
+p {
+  color: $text-secondary;
+  line-height: $leading-relaxed;
+}
+
+a {
+  color: $accent-secondary;
+  text-decoration: none;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $accent-tertiary;
+  }
+}
+
+// ============================================================
+// Form Elements
+// ============================================================
+input,
+textarea,
+select {
+  font-family: $font-sans;
+  font-size: $text-base;
+  color: $text-primary;
+  background: $bg-card;
+  border: 1px solid $border-card;
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+  width: 100%;
+  transition: $transition-base;
+  outline: none;
+  min-height: $touch-min;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    border-color: $accent-primary;
+    background: $bg-card-hover;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ============================================================
+// Button Reset
+// ============================================================
+button {
+  font-family: $font-sans;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  min-height: $touch-min;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// ============================================================
+// Lists
+// ============================================================
+ul, ol {
+  list-style: none;
+}
+
+// ============================================================
+// Images
+// ============================================================
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+// ============================================================
+// Utility Classes
+// ============================================================
+.container {
+  width: 100%;
+  max-width: $max-width-content;
+  margin-inline: auto;
+  padding-inline: $space-4;
+
+  @include md {
+    padding-inline: $space-8;
+  }
+}
+
+.container-sm {
+  width: 100%;
+  max-width: $max-width-md;
+  margin-inline: auto;
+  padding-inline: $space-4;
+
+  @include md {
+    padding-inline: $space-6;
+  }
+}
+
+.text-gradient {
+  @include gradient-text($accent-gradient);
+}
+
+.text-gradient-soft {
+  @include gradient-text(linear-gradient(135deg, #fff, $accent-tertiary));
+}
+
+.sr-only {
+  @include visually-hidden;
+}
+
+// ============================================================
+// Focus Styles (Accessibility)
+// ============================================================
+:focus-visible {
+  @include focus-ring;
+}
+
+// ============================================================
+// Selection Color
+// ============================================================
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: $text-primary;
+}
+
+// ============================================================
+// Scrollbar
+// ============================================================
+html {
+  @include custom-scrollbar;
+}
+
+// ============================================================
+// Global Animations
+// ============================================================
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
+  50%       { box-shadow: 0 0 40px rgba(139, 92, 246, 0.4); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-in {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+// ============================================================
+// Page Transition
+// ============================================================
+.page-enter {
+  animation: fade-in 0.4s ease forwards;
+}
