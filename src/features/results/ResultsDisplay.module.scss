@@ -1,0 +1,220 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  @include flex-col;
+  gap: $space-6;
+  width: 100%;
+}
+
+// Summary section
+.summary {
+  @include glass-card;
+  padding: $space-8 $space-6;
+  text-align: center;
+  @include flex-col-center;
+  gap: $space-4;
+  background: rgba(139, 92, 246, 0.04);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.summaryEyebrow {
+  font-size: $text-sm;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: $weight-semibold;
+}
+
+.topResult {
+  @include flex-col-center;
+  gap: $space-2;
+}
+
+.topEmoji {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+}
+
+.topLabel {
+  font-size: $text-3xl;
+  font-weight: $weight-black;
+  letter-spacing: -0.02em;
+
+  @include md {
+    font-size: $text-4xl;
+  }
+}
+
+.summaryMeta {
+  font-size: $text-sm;
+  color: $text-secondary;
+
+  strong {
+    color: $text-primary;
+    font-weight: $weight-semibold;
+  }
+}
+
+// Empty state
+.empty {
+  @include flex-col-center;
+  gap: $space-3;
+  padding: $space-4;
+}
+
+.emptyEmoji {
+  font-size: 3rem;
+}
+
+.emptyTitle {
+  font-size: $text-xl;
+  font-weight: $weight-semibold;
+  color: $text-primary;
+}
+
+.emptyText {
+  font-size: $text-sm;
+  color: $text-muted;
+  max-width: 300px;
+  text-align: center;
+}
+
+// Insight cards
+.insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-3;
+
+  @include md {
+    gap: $space-4;
+  }
+}
+
+.insightCard {
+  @include flex-col-center;
+  @include glass-card;
+  gap: $space-1;
+  padding: $space-4 $space-3;
+  text-align: center;
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+}
+
+.insightLabel {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $text-muted;
+  font-weight: $weight-semibold;
+}
+
+.insightEmoji {
+  font-size: 1.75rem;
+}
+
+.insightName {
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+
+  @include sm {
+    font-size: $text-sm;
+  }
+}
+
+// Distribution bars
+.distribution {
+  @include glass-card;
+  padding: $space-6;
+  @include flex-col;
+  gap: $space-5;
+}
+
+.sectionTitle {
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bars {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 120px 1fr 32px;
+  align-items: center;
+  gap: $space-3;
+
+  @include sm {
+    grid-template-columns: 140px 1fr 40px;
+  }
+}
+
+.barLabel {
+  @include flex-center;
+  justify-content: flex-start;
+  gap: $space-2;
+  font-size: $text-sm;
+}
+
+.barName {
+  color: $text-secondary;
+  font-weight: $weight-medium;
+  @include truncate;
+}
+
+.barTrack {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: $radius-full;
+  background: linear-gradient(
+    90deg,
+    var(--bar-color),
+    color-mix(in srgb, var(--bar-color) 70%, transparent)
+  );
+  min-width: 4px;
+}
+
+.barCount {
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  color: $text-primary;
+  text-align: right;
+}
+
+// Live indicator
+.liveIndicator {
+  @include flex-center;
+  gap: $space-2;
+  font-size: $text-xs;
+  color: $text-muted;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $success;
+  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+
+  @keyframes pulse-glow {
+    0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70%  { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+}

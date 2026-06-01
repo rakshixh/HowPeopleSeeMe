@@ -1,0 +1,159 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  @include flex-col;
+  align-items: center;
+  gap: $space-6;
+  width: 100%;
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+}
+
+.header {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.title {
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $text-primary;
+
+  @include md {
+    font-size: $text-3xl;
+  }
+}
+
+.subtitle {
+  color: $text-secondary;
+  font-size: $text-base;
+}
+
+// URL card
+.urlCard {
+  width: 100%;
+  background: rgba(139, 92, 246, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: $radius-xl;
+  padding: $space-4 $space-5;
+  @include flex-col;
+  gap: $space-3;
+}
+
+.urlLabel {
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  color: $accent-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.urlRow {
+  @include flex-between;
+  gap: $space-3;
+}
+
+.url {
+  font-size: $text-sm;
+  color: $text-primary;
+  word-break: break-all;
+  text-align: left;
+  font-family: monospace;
+  opacity: 0.8;
+}
+
+.copyBtn {
+  flex-shrink: 0;
+  padding: $space-2 $space-4;
+  border-radius: $radius-md;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  background: $accent-primary;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: $transition-base;
+  min-height: $touch-min;
+  white-space: nowrap;
+
+  &:hover {
+    background: $accent-secondary;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.copied {
+  background: $success;
+}
+
+// Share buttons
+.shareButtons {
+  width: 100%;
+  @include flex-col;
+  gap: $space-3;
+}
+
+.shareLabel {
+  font-size: $text-xs;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: $weight-medium;
+}
+
+.shareGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+}
+
+.shareBtn {
+  @include flex-center;
+  @include touch-target;
+  gap: $space-2;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: $transition-base;
+  padding: $space-3;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.whatsapp {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25D366;
+
+  &:hover {
+    background: rgba(37, 211, 102, 0.18);
+  }
+}
+
+.twitter {
+  background: rgba(29, 161, 242, 0.1);
+  border-color: rgba(29, 161, 242, 0.3);
+  color: #1DA1F2;
+
+  &:hover {
+    background: rgba(29, 161, 242, 0.18);
+  }
+}
+
+.expiry {
+  font-size: $text-xs;
+  color: $text-muted;
+}

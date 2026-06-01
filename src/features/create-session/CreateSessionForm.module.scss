@@ -1,0 +1,92 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.form {
+  @include flex-col;
+  gap: $space-5;
+  width: 100%;
+}
+
+.field {
+  @include flex-col;
+  gap: $space-2;
+}
+
+.label {
+  font-size: $text-sm;
+  font-weight: $weight-medium;
+  color: $text-secondary;
+  letter-spacing: 0.01em;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: $space-4 $space-5;
+  font-size: $text-lg;
+  font-weight: $weight-medium;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid $border-card;
+  border-radius: $radius-xl;
+  color: $text-primary;
+  transition: $transition-base;
+  min-height: 56px;
+
+  &::placeholder {
+    color: $text-muted;
+    font-weight: $weight-normal;
+  }
+
+  &:focus {
+    border-color: $accent-primary;
+    background: rgba(139, 92, 246, 0.06);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+    outline: none;
+  }
+}
+
+.inputError {
+  border-color: $error;
+
+  &:focus {
+    border-color: $error;
+    background: rgba(239, 68, 68, 0.04);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+  }
+}
+
+.checkmark {
+  position: absolute;
+  right: $space-4;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $success;
+  font-size: $text-lg;
+  font-weight: $weight-bold;
+}
+
+.error {
+  font-size: $text-sm;
+  color: $error;
+  overflow: hidden;
+}
+
+.serverError {
+  background: $error-soft;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+  font-size: $text-sm;
+  color: $error;
+  overflow: hidden;
+}
+
+.hint {
+  text-align: center;
+  font-size: $text-xs;
+  color: $text-muted;
+  letter-spacing: 0.02em;
+}
